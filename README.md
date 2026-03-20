@@ -14,30 +14,31 @@ pinned: false
 This project implements Neural Style Transfer, a deep learning technique that blends the content of one image with the style of another image using Convolutional Neural Networks (CNNs).
 
 The system takes two inputs:
-- 🖼 Content Image  
-- 🎨 Style Image  
+- 🖼 Content Image
+- 🎨 Style Image
 
 and produces a stylized output image.
 
 ---
 
 ## 🚀 Features
-- Apply artistic styles to images  
-- Real-time / near real-time processing  
-- Web interface using Flask / Gradio  
-- Supports multiple styles  
-- Uses deep learning models  
+- Apply artistic styles to images
+- Real-time / near real-time processing
+- Web interface using Flask / Gradio
+- Supports multiple styles
+- Uses deep learning models
 
 ---
 
 ## 🛠️ Tech Stack
-- Python 🐍  
-- OpenCV  
-- TensorFlow  
-- TensorFlow Hub  
-- Flask (Backend)  
-- Gradio (UI for deployment)  
-- NumPy, Matplotlib  
+- Python 🐍
+- OpenCV
+- TensorFlow
+- TensorFlow Hub
+- Flask (Backend)
+- Gradio (UI for deployment)
+- NumPy
+- Matplotlib
 
 ---
 
@@ -55,12 +56,9 @@ Neural-Style-Transfer/
 ├── requirements.txt
 ├── README.md
 
----
 
-## ▶️ How to Run (Local)
-
-### 1. Clone repository  
-```bash
+▶️ How to Run (Local)
+1. Clone repository
 git clone https://github.com/saj2304/Neural-Style-Transfer.git
 2. Install dependencies
 pip install -r requirements.txt
@@ -69,10 +67,9 @@ python app.py
 4. Open in browser
 http://127.0.0.1:5000/
 
----
 🌐 Live Demo
 
-👉 (Will be available after Hugging Face deployment)
+👉 Will be available after Hugging Face deployment.
 
 📊 Results
 
@@ -98,7 +95,7 @@ Add more artistic styles
 
 Improve UI/UX
 
-Deploy scalable version
+Deploy a scalable version
 
 👩‍💻 Author
 
