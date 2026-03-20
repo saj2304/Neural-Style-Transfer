@@ -45,7 +45,6 @@ and produces a stylized output image.
 
 
 Neural-Style-Transfer/
-
 │── hf_app.py
 │── app.py
 │── API.py
