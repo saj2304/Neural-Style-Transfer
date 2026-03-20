@@ -45,15 +45,15 @@ and produces a stylized output image.
 
 
 Neural-Style-Transfer/
-│── hf_app.py
-│── app.py
-│── API.py
-│── neural_style_transfer.py
-│── templates/
-│── static/
-│── requirements.txt
-│── README.md
-
+│
+├── hf_app.py
+├── app.py
+├── API.py
+├── neural_style_transfer.py
+├── templates/
+├── static/
+├── requirements.txt
+├── README.md
 
 ---
 
