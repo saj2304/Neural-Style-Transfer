@@ -75,7 +75,7 @@ http://127.0.0.1:5000/
 ---
 🌐 Live Demo
 
-👉 Will be available after Hugging Face deployment.
+👉 [Will be available after Hugging Face deployment.](https://huggingface.co/spaces/saj2304/neural-style-transfer)
 
 ---
 📊 Results
