@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 static/output_*.jpg
+static/content_*.jpg
+static/style_*.jpg
