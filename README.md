@@ -77,6 +77,7 @@ http://127.0.0.1:5000/
 
 👉 Will be available after Hugging Face deployment.
 
+---
 📊 Results
 
 Successfully applied artistic styles
@@ -85,6 +86,7 @@ Generated high-quality stylized images
 
 Maintained content structure
 
+---
 ⚠️ Limitations
 
 High computation time
@@ -93,6 +95,7 @@ Requires GPU for faster performance
 
 Large model size
 
+---
 🔮 Future Improvements
 
 Optimize model for faster performance
@@ -103,11 +106,15 @@ Improve UI/UX
 
 Deploy a scalable version
 
+---
 👩‍💻 Author
 
 Shreya J
 
+---
 GitHub: https://github.com/saj2304
 
+---
 ⭐ If you like this project, give it a star!
 
+---
