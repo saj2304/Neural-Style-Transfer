@@ -1,111 +1,109 @@
-# 🎨 Neural Style Transfer 
+---
+title: Neural Style Transfer
+emoji: 🎨
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+app_file: hf_app.py
+pinned: false
+---
+
+# 🎨 Neural Style Transfer
 
 ## 📌 Overview
-
-This project implements **Neural Style Transfer**, a deep learning technique that blends the **content of one image** with the **style of another image** using Convolutional Neural Networks (CNNs).
+This project implements Neural Style Transfer, a deep learning technique that blends the content of one image with the style of another image using Convolutional Neural Networks (CNNs).
 
 The system takes two inputs:
+- 🖼 Content Image  
+- 🎨 Style Image  
 
-* 🖼 Content Image
-* 🎨 Style Image
-
-and produces a **stylized output image**.
+and produces a stylized output image.
 
 ---
 
 ## 🚀 Features
-
-* Apply artistic styles to images
-* Real-time / near real-time processing
-* Web interface using Flask
-* Supports multiple styles
-* Uses deep learning models
+- Apply artistic styles to images  
+- Real-time / near real-time processing  
+- Web interface using Flask / Gradio  
+- Supports multiple styles  
+- Uses deep learning models  
 
 ---
 
 ## 🛠️ Tech Stack
-
-* Python 🐍
-* OpenCV
-* TensorFlow / PyTorch
-* Flask (for web app)
-* NumPy, Matplotlib
+- Python 🐍  
+- OpenCV  
+- TensorFlow  
+- TensorFlow Hub  
+- Flask (Backend)  
+- Gradio (UI for deployment)  
+- NumPy, Matplotlib  
 
 ---
 
 ## 📂 Project Structure
 
-```
+
 Neural-Style-Transfer/
+│── hf_app.py
 │── app.py
 │── API.py
 │── neural_style_transfer.py
 │── templates/
 │── static/
-│── notebooks/
-│── models/
-```
+│── requirements.txt
+│── README.md
+
 
 ---
 
-## ▶️ How to Run
+## ▶️ How to Run (Local)
 
-### 1. Clone repository
-
-```
+### 1. Clone repository  
+```bash
 git clone https://github.com/saj2304/Neural-Style-Transfer.git
-```
-
-### 2. Install dependencies
-
-```
+2. Install dependencies
 pip install -r requirements.txt
-```
-
-### 3. Run the project
-
-```
+3. Run the project
 python app.py
-```
-
-### 4. Open in browser
-
-```
+4. Open in browser
 http://127.0.0.1:5000/
-```
 
 ---
+🌐 Live Demo
 
-## 📊 Results
+👉 (Will be available after Hugging Face deployment)
 
-* Successfully applied artistic styles
-* Generated high-quality stylized images
-* Maintained content structure
+📊 Results
 
----
+Successfully applied artistic styles
 
-## ⚠️ Limitations
+Generated high-quality stylized images
 
-* High computation time
-* Requires GPU for faster performance
-* Large model size
+Maintained content structure
 
----
+⚠️ Limitations
 
-## 🔮 Future Improvements
+High computation time
 
-* Optimize model for faster performance
-* Add more artistic styles
-* Deploy as web application
+Requires GPU for faster performance
 
----
+Large model size
 
-## 👩‍💻 Author
+🔮 Future Improvements
 
-**Shreya J**
+Optimize model for faster performance
 
-* GitHub: https://github.com/saj2304
+Add more artistic styles
 
----
+Improve UI/UX
 
-## ⭐ If you like this project, give it a star!
+Deploy scalable version
+
+👩‍💻 Author
+
+Shreya J
+
+GitHub: https://github.com/saj2304
+
+⭐ If you like this project, give it a star!
