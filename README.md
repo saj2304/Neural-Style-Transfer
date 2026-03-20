@@ -45,27 +45,8 @@ and produces a stylized output image.
 ## 📂 Project Structure
 
 
-Neural-Style-Transfer/
-│
-├── hf_app.py
-├── app.py
-├── API.py
-├── neural_style_transfer.py
-├── templates/
-├── static/
-├── requirements.txt
-├── README.md
 
-📂 Project Structure
-Neural-Style-Transfer/
-│── app.py
-│── API.py
-│── neural_style_transfer.py
-│── templates/
-│── static/
-│── notebooks/
-│── models/
-
+```text
 Neural-Style-Transfer/
 │
 ├── hf_app.py
@@ -78,6 +59,9 @@ Neural-Style-Transfer/
 ├── models/
 ├── requirements.txt
 ├── README.md
+
+```
+
 ---
 ▶️ How to Run (Local)
 1. Clone repository
