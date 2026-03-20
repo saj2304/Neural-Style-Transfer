@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neural Style Transfer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+      margin: 0;
+      padding: 2rem;
+      color: #fff;
+      text-align: center;
+      transition: background 0.4s ease;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 90%;
+      max-width: 500px;
+      transition: all 0.3s ease;
+    }
+    .preview {
+      max-width: 100%;
+      margin-top: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .preview:hover {
+      transform: scale(1.02);
+    }
+    .btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .loader-container {
+      margin-top: 20px;
+    }
+    .loader-circle {
+      width: 40px;
+      height: 40px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ddd;
+    }
+    .drop-zone {
+      border: 2px dashed rgba(255,255,255,0.5);
+      padding: 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 0.3s ease;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      background: rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎨 Neural Style Transfer</h1>
+
+  <div class="glass-card">
+    <div class="drop-zone" id="content-drop-zone" onclick="document.getElementById('contentImage').click()">
+      <p>Click or Drop Content Image Here</p>
+      <input type="file" id="contentImage" accept="image/*" hidden onchange="previewImage(this, 'contentPreview')" />
+      <img id="contentPreview" class="preview" alt="Content Preview" />
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="drop-zone" id="style-drop-zone" onclick="document.getElementById('styleImage').click()">
+      <p>Click or Drop Style Image Here</p>
+      <input type="file" id="styleImage" accept="image/*" hidden onchange="previewImage(this, 'stylePreview')" />
+      <img id="stylePreview" class="preview" alt="Style Preview" />
+    </div>
+  </div>
+
+  <button class="btn" onclick="submitImages()">Apply Style</button>
+
+  <div id="loaderContainer" class="loader-container hidden">
+    <div class="loader-circle"></div>
+    <p id="loaderText">Analyzing brushstrokes... 0%</p>
+  </div>
+
+  <h2 id="outputTitle" class="hidden">Stylized Output</h2>
+  <img id="resultImage" src="" alt="Stylized Output" class="preview hidden" />
+  <button id="downloadBtn" class="btn hidden" onclick="downloadImage()">Download Image</button>
+
+  <footer>Made with ❤️ by Shub</footer>
+
+  <script>
+    function previewImage(input, previewId) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = e => {
+        document.getElementById(previewId).src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function downloadImage() {
+      const img = document.getElementById('resultImage');
+      const link = document.createElement('a');
+      link.href = img.src;
+      link.download = 'stylized_output.jpg';
+      link.click();
+    }
+
+    async function submitImages() {
+      const contentFile = document.getElementById('contentImage').files[0];
+      const styleFile = document.getElementById('styleImage').files[0];
+
+      if (!contentFile || !styleFile) {
+        alert("Please upload both content and style images.");
+        return;
+      }
+
+      const loaderContainer = document.getElementById('loaderContainer');
+      const loaderText = document.getElementById('loaderText');
+      loaderContainer.classList.remove('hidden');
+
+      const steps = ["Analyzing brushstrokes", "Extracting style vectors", "Transferring Van Gogh's flair", "Finalizing masterpiece"];
+      let progress = 0;
+      const interval = setInterval(() => {
+        if (progress >= 100) return;
+        progress += Math.floor(Math.random() * 10) + 5;
+        loaderText.textContent = steps[Math.floor(progress / 30) % steps.length] + "... " + Math.min(progress, 100) + "%";
+      }, 400);
+
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
+
+      const contentBase64 = await toBase64(contentFile);
+      const styleBase64 = await toBase64(styleFile);
+
+      const response = await fetch('/process_images', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contentImageData: contentBase64,
+          styleImageData: styleBase64
+        })
+      });
+
+      const result = await response.json();
+      clearInterval(interval);
+      loaderContainer.classList.add('hidden');
+
+      document.getElementById('resultImage').src = result.imageUrl;
+      document.getElementById('resultImage').classList.remove('hidden');
+      document.getElementById('outputTitle').classList.remove('hidden');
+      document.getElementById('downloadBtn').classList.remove('hidden');
+    }
+
+    function enableDragAndDrop(dropZoneId, inputId, previewId) {
+      const dropZone = document.getElementById(dropZoneId);
+      const inputFile = document.getElementById(inputId);
+
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("dragover");
+      });
+
+      dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("dragover");
+      });
+
+      dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("dragover");
+        if (e.dataTransfer.files.length > 0) {
+          inputFile.files = e.dataTransfer.files;
+          previewImage(inputFile, previewId);
+        }
+      });
+    }
+
+    // Enable drag and drop for both zones
+    enableDragAndDrop("content-drop-zone", "contentImage", "contentPreview");
+    enableDragAndDrop("style-drop-zone", "styleImage", "stylePreview");
+  </script>
+</body>
+</html>
