@@ -1,4 +1,4 @@
-# 🎨 Neural Style Transfer using Deep Learning
+# 🎨 Neural Style Transfer 
 
 ## 📌 Overview
 
