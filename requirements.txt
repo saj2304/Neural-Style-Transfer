@@ -1,8 +1,8 @@
-flask
+gradio
+tensorflow
+tensorflow-hub
 numpy
 opencv-python
 matplotlib
-tensorflow
-tensorflow-hub
 Pillow
-gunicorn
+flask
